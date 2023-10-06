@@ -1,31 +1,31 @@
 #!/usr/bin/python3
-'''A simple Flask web application.
-'''
+"""Start web application with two routings
+"""
+
 from flask import Flask
-
-
 app = Flask(__name__)
-'''The Flask application instance.'''
-app.url_map.strict_slashes = False
 
 
 @app.route('/')
-def index():
-    '''The home page.'''
+def hello():
+    """Return string when route queried
+    """
     return 'Hello HBNB!'
 
 
 @app.route('/hbnb')
 def hbnb():
-    '''The hbnb page.'''
+    """Return string when route queried
+    """
     return 'HBNB'
 
 
 @app.route('/c/<text>')
-def c_page(text):
-    '''The c page.'''
-    return 'C {}'.format(text.replace('_', ' '))
-
+def c_is_fun(text):
+    """Return reformatted text
+    """
+    return 'C ' + text.replace('_', ' ')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port='5000')
+    app.url_map.strict_slashes = False
+    app.run(host='0.0.0.0', port=5000)
